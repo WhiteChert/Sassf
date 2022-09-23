@@ -17,7 +17,7 @@ Return
 
 CheckUpdate(Version) {
 	Http := ComObjCreate("WinHttp.WinHttpRequest.5.1"), Http.Option(6) := 0
-	Http.Open("GET", "https://raw.githubusercontent.com/serzh82saratov/Update/master/README.md")
+	Http.Open("GET", "https://raw.githubusercontent.com/WhiteChert/Sassf/main/README.md")
 	Http.Send(), Text := Http.ResponseText
 	New := RegExReplace(Text, "i).*?Version\s*(\d+)\s*", "$1")
 	If (New <= Version)
@@ -25,7 +25,7 @@ CheckUpdate(Version) {
 	MsgBox, % 4+32+256, CheckUpdate, Есть новая версия, обновить с %Version% на %New%?
 	IfMsgBox, No
 		Return
-	URLDownloadToFile, https://github.com/serzh82saratov/Update/blob/master/Update.exe?raw=true, %A_Temp%\Update.exe
+	URLDownloadToFile, https://github.com/WhiteChert/Sassf//blob/main/Update.exe?raw=true, %A_Temp%\Update.exe
 	PID := DllCall("GetCurrentProcessId")
 	Run %A_Temp%\Update.exe "/Update" "%PID%" "%A_ScriptFullPath%"
 	ExitApp
